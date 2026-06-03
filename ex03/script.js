@@ -1,19 +1,25 @@
-let idades = []; 
+let vetor = [];
 
-for (let i = 0; i < 7; i++) {
-    let idade = parseInt(prompt("Digite a idade da pessoa " + (i + 1) + ":"));
-    idades.push(idade);
+for (let i = 0; i < 15; i++) {
+    let num = parseInt(prompt(`Digite o ${i + 1}º número:`));
+    vetor.push(num); 
 }
 
-let posicoes = [];
-for (let i = 0; i < idades.length; i++) {
-    if (idades[i] > 25) {
-        posicoes.push(i);
+
+let resultado = `--- Resultado ---\n\nVetor completo: [ ${vetor.join(", ")} ]\n\n`;
+resultado += "Posições com múltiplos de 10:\n";
+
+let encontrouMultiplo = false;
+
+for (let i = 0; i < vetor.length; i++) {
+    if (vetor[i] % 10 === 0) {
+        resultado += `• Posição [${i}] -> Valor: ${vetor[i]}\n`;
+        encontrouMultiplo = true;
     }
 }
 
-if (posicoes.length > 0) {
-    alert("As posições das pessoas com mais de 25 anos são: " + posicoes.join(", "));
-} else {
-    alert("Não há pessoas com mais de 25 anos.");
+if (!encontrouMultiplo) {
+    resultado += "Nenhum múltiplo de 10 foi digitado.";
 }
+
+alert(resultado);
